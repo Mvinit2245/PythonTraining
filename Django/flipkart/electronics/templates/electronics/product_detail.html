@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <style>
+        /* General body styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fafafa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Container that holds the product list */
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        /* Individual product card styling */
+        .product {
+            background-color: #fff;
+            border-radius: 10px;
+            width: 30%;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        {% comment %} /* Product image styling with hover effect */
+        .product img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-bottom: 5px solid #f5f5f5;
+            transition: transform 0.3s ease;
+        }
+
+        .product:hover img {
+            transform: scale(1.05);
+        } {% endcomment %}
+
+        /* Product info styling */
+        .product-info {
+            padding: 20px;
+        }
+
+        /* Product name styling */
+        .product-name {
+            font-size: 1.6em;
+            font-weight: bold;
+            color: #333;
+            margin: 0;
+        }
+
+        /* Product price styling */
+        .product-price {
+            font-size: 1.2em;
+            color: #007b5e;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* Product description styling */
+        .product-description {
+            font-size: 1em;
+            color: #666;
+            margin-top: 10px;
+            height: 60px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Button styling */
+        .button {
+            padding: 10px 20px;
+            background-color: #007b5e;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Button hover effect */
+        .button:hover {
+            background-color: #005f43;
+        }
+
+        /* Media query for smaller screens */
+        @media (max-width: 768px) {
+            .product {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product {
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+     <center> <h1> Flipkart Shopping </h1> </center>
+<div class="container">
+    {% for pro in prod %}
+    <div class="product">
+        {% comment %} <img src="{{ pro.image_url }}" alt="{{ pro.name }}"> {% endcomment %}
+        <div class="product-info">
+            <h2 class="product-name">{{ pro.name }}</h2>
+            <p class="product-price">${{ pro.price }}</p>
+            <p class="product-description">{{ pro.description }}</p>
+            <button class="button">Add to Cart</button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>
